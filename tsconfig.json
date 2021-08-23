@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+      "alwaysStrict": true,
+      "keyofStringsOnly": true,
+      "noUncheckedIndexedAccess": true,
+      "noFallthroughCasesInSwitch": true,
+      "downlevelIteration": true,
+      "allowUnreachableCode": false,
+      "skipLibCheck": true,
+      "module": "es6",
+      "moduleResolution": "node",
+      "declaration": false,
+      "removeComments": true,
+      "emitDecoratorMetadata": true,
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "noErrorTruncation": true,
+      "noUnusedParameters": true,
+      "target": "ESNext",
+      "sourceMap": false,
+      "baseUrl": "./src",
+      "incremental": false,
+      "strict": true,
+      "checkJs": true,
+      "allowJs": true,
+      "noEmit": true,
+      "useUnknownInCatchVariables": false,
+    },
+    "exclude":[
+      "node_modules"
+    ]
+  }

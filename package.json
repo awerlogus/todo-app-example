@@ -1,0 +1,34 @@
+{
+    "name": "todo-app-example",
+    "author": "awerlogus",
+    "description": "Simple todo app example based on the 8th architecture",
+    "license": "MIT",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/awerlogus/todo-app-example.git"
+    },
+    "bugs": {
+        "url": "https://github.com/awerlogus/todo-app-example/issues"
+    },
+    "homepage": "https://github.com/awerlogus/todo-app-example/#readme",
+    "keywords": [
+        "nodejs",
+        "architecture",
+        "8th architecture",
+        "todo",
+        "app",
+        "todo-app",
+        "example"
+    ],
+    "devDependencies": {
+        "@babel/preset-env": "^7.15.0",
+        "@types/jest": "^27.0.1",
+        "@types/node": "^14.11.1",
+        "jest": "^27.0.6"
+    },
+    "dependencies": {
+        "esm": "^3.2.25"
+    }
+}
