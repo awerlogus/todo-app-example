@@ -32,6 +32,32 @@ describe('runProgram function', () => {
     expect(P._getNextTodoId()).toBe(1)
   })
 
+  it('must add new item on + command executed without space', async () => {
+    const P = createTestProgram({
+      consoleFacade: ['+item1\n', '.\n'],
+    })
+
+    await runProgram(P)()
+
+    expect(P._getLogs()).toMatchObject([
+      clearedConsole,
+      loggedString('TODO list is empty\n'),
+      askedQuestion('Write the next command: '),
+      gotAnswer('+item1\n'),
+      clearedConsole,
+      loggedString('TODO items list:\n'),
+      loggedString('0) item1\n'),
+      askedQuestion('Write the next command: '),
+      gotAnswer('.\n'),
+    ])
+
+    expect(P._getTodoItems()).toMatchObject(new Map([
+      [0, { id: 0, text: 'item1' }]
+    ]))
+
+    expect(P._getNextTodoId()).toBe(1)
+  })
+
   it('must show error on + command executed with empty todo text', async () => {
     const P = createTestProgram({
       consoleFacade: ['+ \n', '\n', '.\n'],
@@ -73,6 +99,32 @@ describe('runProgram function', () => {
       loggedString('0) item1\n'),
       askedQuestion('Write the next command: '),
       gotAnswer('- 0\n'),
+      clearedConsole,
+      loggedString('TODO list is empty\n'),
+      askedQuestion('Write the next command: '),
+      gotAnswer('.\n'),
+    ])
+
+    expect(P._getTodoItems()).toMatchObject(new Map())
+
+    expect(P._getNextTodoId()).toBe(1)
+  })
+
+  it('must delete item on - command executed without space', async () => {
+    const P = createTestProgram({
+      consoleFacade: ['-0\n', '.\n'],
+      todoItemsRepository: new Map([[0, { id: 0, text: 'item1' }]]),
+      todoIdsRepository: 1,
+    })
+
+    await runProgram(P)()
+
+    expect(P._getLogs()).toMatchObject([
+      clearedConsole,
+      loggedString('TODO items list:\n'),
+      loggedString('0) item1\n'),
+      askedQuestion('Write the next command: '),
+      gotAnswer('-0\n'),
       clearedConsole,
       loggedString('TODO list is empty\n'),
       askedQuestion('Write the next command: '),

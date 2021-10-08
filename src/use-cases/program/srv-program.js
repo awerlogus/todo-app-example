@@ -15,7 +15,7 @@ import { isExit } from 'models/mdl-program'
 const tryHandleAdd = P => async cmd => {
   if (!cmd.startsWith('+')) { return false }
 
-  const text = cmd.substr(1).trim()
+  const text = cmd.substring(1).trim()
 
   if (text.length === 0) {
     await notify(P)('Can not add an empty TODO item')
