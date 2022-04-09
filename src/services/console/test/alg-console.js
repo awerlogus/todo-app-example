@@ -27,6 +27,6 @@ const getDefaults = () => ({
 })
 
 /** @type {(init?: Partial<ConsoleAlgebraInit>) => _ConsoleAlgebra} */
-export const createTestConsoleAlgebra = createAlgebra(getDefaults(), init => ({
+export const createTestConsoleAlgebra = createAlgebra(getDefaults, init => ({
   ...createTestConsoleFacade(init.console)
 }))

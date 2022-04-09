@@ -47,7 +47,7 @@ const getDefaults = () => ({
 })
 
 /** @type {(init?: Partial<TodoItemsAlgebraInit>) => _TodoItemsAlgebra} */
-export const createTodoItemsAlgebra = createAlgebra(getDefaults(), init => ({
+export const createTodoItemsAlgebra = createAlgebra(getDefaults, init => ({
   ...createNextTodoIdRepository(init.nextTodoId),
   ...createTodoItemsRepository(init.todoItems),
 }))
