@@ -1,10 +1,11 @@
 import { createTestConsoleFacade } from 'services/console/test/fcd-console'
+import { createAlgebra } from 'packages/8arc'
 
 // SECTION Types
 
 // MODULE Algebras
 
-/** @typedef {{ consoleFacade: ReadonlyArray<string> }} ConsoleFacadeInit */
+/** @typedef {{ console: ReadonlyArray<string> }} ConsoleFacadeInit */
 
 /**
  * @typedef {(
@@ -20,7 +21,12 @@ import { createTestConsoleFacade } from 'services/console/test/fcd-console'
 
 // SECTION Exports
 
-/** @type {(init: ConsoleAlgebraInit) => _ConsoleAlgebra} */
-export const createTestConsoleAlgebra = init => ({
-  ...createTestConsoleFacade(init.consoleFacade)
+/** @type {() => ConsoleAlgebraInit} */
+const getDefaults = () => ({
+  console: []
 })
+
+/** @type {(init?: Partial<ConsoleAlgebraInit>) => _ConsoleAlgebra} */
+export const createTestConsoleAlgebra = createAlgebra(getDefaults(), init => ({
+  ...createTestConsoleFacade(init.console)
+}))

@@ -1,5 +1,5 @@
-import { todoItemsAlgebra } from 'services/todo-items/prod/alg-todo-items'
-import { consoleAlgebra } from 'services/console/prod/alg-console'
+import { createTodoItemsAlgebra } from 'services/todo-items/alg-todo-items'
+import { createConsoleAlgebra } from 'services/console/prod/alg-console'
 
 // SECTION Types
 
@@ -11,6 +11,6 @@ import { consoleAlgebra } from 'services/console/prod/alg-console'
 
 /** @type {Program} */
 export const program = {
-  ...todoItemsAlgebra,
-  ...consoleAlgebra,
+  ...createTodoItemsAlgebra(),
+  ...createConsoleAlgebra(),
 }

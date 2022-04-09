@@ -4,7 +4,7 @@
 
 /** @typedef {import('models/item').Item} Item */
 
-// MODULE Algebras
+// MODULE Prod algebras
 
 /** @typedef {{ hasTodoItem(id: number): boolean }} HasTodoItem */
 
@@ -23,6 +23,28 @@
  * )} TodoItemsRepository
  */
 
+// MODULE Test algebras
+
+/** @typedef {{ _getTodoItems(): ReadonlyMap<number, Item> }} _GetTodoItems */
+
+/**
+ * @typedef {(
+ *  & _GetTodoItems
+ *  & TodoItemsRepository
+ * )} _TodoItemsRepository
+ */
+
 // SECTION Exports
 
-export default {}
+/** @type {(init: ReadonlyMap<number, Item>) => _TodoItemsRepository} */
+export const createTodoItemsRepository = init => {
+  const state = new Map(init)
+
+  return {
+    getTodoItems: () => Array.from(state.values()),
+    addTodoItem: (id, item) => state.set(id, item),
+    removeTodoItem: id => state.delete(id),
+    hasTodoItem: id => state.has(id),
+    _getTodoItems: () => state,
+  }
+}

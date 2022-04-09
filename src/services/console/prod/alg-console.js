@@ -1,4 +1,4 @@
-import { consoleFacade } from 'services/console/prod/fcd-console'
+import { createConsoleFacade } from 'services/console/prod/fcd-console'
 
 // SECTION Types
 
@@ -8,7 +8,7 @@ import { consoleFacade } from 'services/console/prod/fcd-console'
 
 // SECTION Exports
 
-/** @type {ConsoleAlgebra} */
-export const consoleAlgebra = {
-  ...consoleFacade
-}
+/** @type {() => ConsoleAlgebra} */
+export const createConsoleAlgebra = () => ({
+  ...createConsoleFacade()
+})

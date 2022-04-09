@@ -6,7 +6,7 @@ import { notify } from 'services/console/srv-console'
 
 describe('notify function', () => {
   it('must write message to console and ask user to press enter', async () => {
-    const P = createTestConsoleAlgebra({ consoleFacade: ['\n'] })
+    const P = createTestConsoleAlgebra({ console: ['\n'] })
 
     await notify(P)('message')
 
